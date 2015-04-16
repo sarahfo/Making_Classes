@@ -11,10 +11,10 @@ class WatermelonOrder(object):
     def get_price(self, qty):
         """Calculate price, given a number of melons ordered."""
         if self.species == "Watermelon":
-            subtotal = BASE_PRICE * qty   # TODO, calculate the real amount!
-        if qty >= 3: 
-            total = subtotal * .75
-        ##return subtotal
+            subtotal = BASE_PRICE * qty   # calculate subtotal pre-discount
+        if qty >= 3:                # discount condition 
+            total = subtotal * .75  # add discount for bulk purchase
+      
         return total
 
 class CantaloupeOrder(object):
@@ -27,9 +27,9 @@ class CantaloupeOrder(object):
     def get_price(self,qty):
         """Calculate price of Cantaloupe given number of melons ordered."""
         if self.species == "Cantaloupe":
-            subtotal = BASE_PRICE * qty
-        if qty >= 5:
-            total = subtotal * .50 # this is where we make the equation for calculating price
+            subtotal = BASE_PRICE * qty  #subtotal before discount (if applicable)
+        if qty >= 5:                # discount condition
+            total = subtotal * .50  #calculates discount for bulk melon purchase
 
         return float(total)
 
@@ -43,9 +43,9 @@ class Casaba(object):
     def get_price(self, qty): 
         """Calculate price, given a number of melons ordered. """
         if self.species == "Casaba":
-            subtotal = BASE_PRICE * qty
-        if self.imported == True:
-            total = subtotal * 1.5
+            subtotal = ((BASE_PRICE + 1)* qty)
+        if self.imported == True:     # import condition for fees
+            total = subtotal * 1.5   # add extra cost for import fees
     
         return float(total)
 
@@ -58,10 +58,10 @@ class Sharlyn(object):
 
     def get_price(self, qty):
         """Calculate price given a number of melons ordered."""
-        if self.species == "Casaba":
+        if self.species == "Sharlyn":
             subtotal = BASE_PRICE * qty
-        if self.imported == True:
-            total = subtotal * 1.5
+        if self.imported == True:     # import condition for fees
+            total = subtotal * 1.5    # add extra cost for import fees
     
         return float(total)
 
@@ -75,10 +75,10 @@ class Santa_Claus(object):
 
     def get_price(self, qty):
         """Calculate price given a number of melons ordered."""
-        if self.species == "Casaba":
+        if self.species == "Santa_Claus":
             subtotal = BASE_PRICE * qty
-        if self.imported == True:
-            total = subtotal * 1.5
+        if self.imported == True:    # import condition for fees
+            total = subtotal * 1.5   # add extra cost for import fees
     
         return float(total)
 
@@ -90,11 +90,11 @@ class Christmas(object):
     seasons = ['Winter', 'Spring']
 
     def get_price(self,qty):
-
         """Calculate price given a number of melons ordered."""
-        total = 0
-
-        return total
+        if self.species == "Christmas":
+             total = BASE_PRICE * qty
+        
+        return float(total)
 
 class Horned_Melon(object):
     species = "Horned_Melon"
@@ -105,11 +105,10 @@ class Horned_Melon(object):
 
     def get_price(self, qty): 
         """Calculate price given a number of melons ordered"""
-        
-        if self.species == "Casaba":
+        if self.species == "Horned_Melon":
             subtotal = BASE_PRICE * qty
-        if self.imported == True:
-            total = subtotal * 1.5
+        if self.imported == True:      # import condition for fees
+            total = subtotal * 1.5     # add extra cost for import fees
     
         return float(total)
 
@@ -118,16 +117,16 @@ class Horned_Melon(object):
 class Xigua(object):
     species = "Xigua"       
     color = "black" 
-    imported = True
+    imported = True 
     shape = 'square'
     seasons = ['Summer']
 
     def get_price(self, qty): 
         """Calculate price given a number of melons ordered"""
         if self.species == "Xigua":
-            subtotal = ((BASE_PRICE * qty) * 2)
-        if self.imported == True:
-            total = subtotal * 1.5
+            subtotal = ((BASE_PRICE * qty) * 2)   # multiply by 2 for square melon cost
+        if self.imported == True:     # import condition for fees
+            total = subtotal * 1.5    # add extra cost for import fees
     
         return float(total)
 
@@ -141,9 +140,9 @@ class Ogen(object):
 
     def get_price(self, qty):
         """Calculate price given a number of melons ordered.""" 
-
-        total = 0 
-
-        return total 
+        if self.species == "Ogen":
+            total = ((BASE_PRICE + 1)* qty)  # extra 1/per melon cost for exotic melon
+    
+        return float(total)
 
 
