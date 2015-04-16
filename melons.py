@@ -1,23 +1,17 @@
 """This file should have our melon-type classes in it."""
 
 class Melon(object):
-    species = ["Watermelon", "Casaba", "Cantaloupe", "Christmas", 
-    "Santa_Claus", "Sharlyn", "Xigua", "Ogen", "Horned_Melon"]
-    color = ["green", "tan", "black", "yellow"]
-    imported = [True, False]
-    shape = ['natural', 'square']
-    seasons = ['Winter', 'Spring', 'Summer', 'Fall']
 
-    """docstring for Melon"""
+    """Method for base price of Melons"""
     def get_base_price(self):
-        get_base_price = 5      
-        BASE_PRICE = get_base_price
+        ##get_base_price = 5      
+       ##BASE_PRICE = get_base_price
+       return 5
+        ##return BASE_PRICE
 
-        return BASE_PRICE
 
 
-
-class WatermelonOrder(Melon):
+class WatermelonOrder(Melon):   # is subclass of Melon
     species = "Watermelon"
     color = "green"
     imported = False
@@ -26,14 +20,15 @@ class WatermelonOrder(Melon):
 
     def get_price(self, qty):
         """Calculate price, given a number of melons ordered."""
+        best_price = super(WatermelonOrder, self).get_base_price()    #look at parent class and use get_base_price method
         if self.species == "Watermelon":
-            subtotal = BASE_PRICE * qty   # calculate subtotal pre-discount
+            subtotal = best_price * qty   # calculate subtotal pre-discount
         if qty >= 3:                # discount condition 
             total = subtotal * .75  # add discount for bulk purchase
       
         return float(total)
 
-class CantaloupeOrder(object):
+class CantaloupeOrder(Melon):   # is subclass of Melon
     species = "Cantaloupe"
     color = "tan"
     imported = False 
@@ -42,14 +37,15 @@ class CantaloupeOrder(object):
 
     def get_price(self,qty):
         """Calculate price of Cantaloupe given number of melons ordered."""
+        best_price = super(CantaloupeOrder, self).get_base_price()    #look at parent class and use get_base_price method
         if self.species == "Cantaloupe":
-            subtotal = BASE_PRICE * qty  #subtotal before discount (if applicable)
+            subtotal = best_price * qty  #subtotal before discount (if applicable)
         if qty >= 5:                # discount condition
             total = subtotal * .50  #calculates discount for bulk melon purchase
 
         return float(total)
 
-class Casaba(object):
+class CasabaOrder(Melon):   # is subclass of Melon
     species = "Casaba"
     color = "tan" 
     imported = True
@@ -58,14 +54,15 @@ class Casaba(object):
 
     def get_price(self, qty): 
         """Calculate price, given a number of melons ordered. """
+        best_price = super(CasabaOrder, self).get_base_price()    #look at parent class and use get_base_price method
         if self.species == "Casaba":
-            subtotal = ((BASE_PRICE + 1)* qty)
+            subtotal = ((best_price + 1)* qty)
         if self.imported == True:     # import condition for fees
             total = subtotal * 1.5   # add extra cost for import fees
     
         return float(total)
 
-class Sharlyn(object):
+class SharlynOrder(Melon):   # is subclass of Melon
     species = "Sharlyn"
     color = 'tan'
     imported = True
@@ -74,14 +71,15 @@ class Sharlyn(object):
 
     def get_price(self, qty):
         """Calculate price given a number of melons ordered."""
+        best_price = super(SharlynOrder, self).get_base_price()   #look at parent class and use get_base_price method
         if self.species == "Sharlyn":
-            subtotal = BASE_PRICE * qty
+            subtotal = best_price * qty
         if self.imported == True:     # import condition for fees
             total = subtotal * 1.5    # add extra cost for import fees
     
         return float(total)
 
-class Santa_Claus(object):
+class Santa_ClausOrder(Melon):  # is subclass of Melon
 
     species = "Santa_Claus"
     color = "green"
@@ -91,15 +89,16 @@ class Santa_Claus(object):
 
     def get_price(self, qty):
         """Calculate price given a number of melons ordered."""
+        best_price = super(Santa_ClausOrder, self).get_base_price()  #look at parent class and use get_base_price method
         if self.species == "Santa_Claus":
-            subtotal = BASE_PRICE * qty
+            subtotal = best_price * qty
         if self.imported == True:    # import condition for fees
             total = subtotal * 1.5   # add extra cost for import fees
     
         return float(total)
 
-class Christmas(object):
-    species = "Christmas"
+class ChristmasOrder(Melon):   # Christmas is subclass of Melon
+    species = "Christmas" 
     color = "green"
     imported = False
     shape = 'natural'
@@ -107,12 +106,13 @@ class Christmas(object):
 
     def get_price(self,qty):
         """Calculate price given a number of melons ordered."""
+        best_price = super(ChristmasOrder, self).get_base_price()    #look at parent class and use get_base_price method
         if self.species == "Christmas":
-             total = BASE_PRICE * qty
+             total = best_price * qty
         
         return float(total)
 
-class Horned_Melon(object):
+class Horned_MelonOrder(Melon):   # Horned is subclass of Melon
     species = "Horned_Melon"
     color = "yellow" 
     imported = True
@@ -121,8 +121,9 @@ class Horned_Melon(object):
 
     def get_price(self, qty): 
         """Calculate price given a number of melons ordered"""
+        best_price = super(Horned_MelonOrder, self).get_base_price()   #look at parent class and use get_base_price method
         if self.species == "Horned_Melon":
-            subtotal = BASE_PRICE * qty
+            subtotal = best_price * qty
         if self.imported == True:      # import condition for fees
             total = subtotal * 1.5     # add extra cost for import fees
     
@@ -130,7 +131,7 @@ class Horned_Melon(object):
 
 
 
-class Xigua(object):
+class XiguaOrder(Melon):   # Xigua is subclass of Melon
     species = "Xigua"       
     color = "black" 
     imported = True 
@@ -139,15 +140,16 @@ class Xigua(object):
 
     def get_price(self, qty): 
         """Calculate price given a number of melons ordered"""
+        best_price = super(XiguaOrder, self).get_base_price()
         if self.species == "Xigua":
-            subtotal = ((BASE_PRICE * qty) * 2)   # multiply by 2 for square melon cost
+            subtotal = ((best_price * qty) * 2)   # multiply by 2 for square melon cost
         if self.imported == True:     # import condition for fees
             total = subtotal * 1.5    # add extra cost for import fees
     
         return float(total)
 
 
-class Ogen(object):
+class OgenOrder(Melon):     #Ogen is subclass of Melon
     species = "Ogen"
     color = "tan" 
     imported = False
@@ -156,8 +158,9 @@ class Ogen(object):
 
     def get_price(self, qty):
         """Calculate price given a number of melons ordered.""" 
+        best_price = super(OgenOrder, self).get_base_price()
         if self.species == "Ogen":
-            total = ((BASE_PRICE + 1)* qty)  # extra 1/per melon cost for exotic melon
+            total = ((best_price + 1)* qty)  # extra 1/per melon cost for exotic melon
     
         return float(total)
 
