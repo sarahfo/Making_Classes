@@ -1,7 +1,23 @@
 """This file should have our melon-type classes in it."""
-BASE_PRICE = 5
 
-class WatermelonOrder(object):
+class Melon(object):
+    species = ["Watermelon", "Casaba", "Cantaloupe", "Christmas", 
+    "Santa_Claus", "Sharlyn", "Xigua", "Ogen", "Horned_Melon"]
+    color = ["green", "tan", "black", "yellow"]
+    imported = [True, False]
+    shape = ['natural', 'square']
+    seasons = ['Winter', 'Spring', 'Summer', 'Fall']
+
+    """docstring for Melon"""
+    def get_base_price(self):
+        get_base_price = 5      
+        BASE_PRICE = get_base_price
+
+        return BASE_PRICE
+
+
+
+class WatermelonOrder(Melon):
     species = "Watermelon"
     color = "green"
     imported = False
@@ -15,7 +31,7 @@ class WatermelonOrder(object):
         if qty >= 3:                # discount condition 
             total = subtotal * .75  # add discount for bulk purchase
       
-        return total
+        return float(total)
 
 class CantaloupeOrder(object):
     species = "Cantaloupe"
